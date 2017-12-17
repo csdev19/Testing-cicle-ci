@@ -21,5 +21,5 @@ jobs:
           command: dnf install git -y   
       - run:
           name: Automatic deploy 
-          command: git checkout -b gh-pages; rm -r README.md  .circleci; mv src/* .; rm -r src; git add .; git commit -m ":trollface: Deploy from circleci"; git push -f origin gh-page; echo "ojala funcione :c"
+          command: git checkout -b gh-pages; rm -r README.md  .circleci; mv src/* .; rm -r src; git add .; git commit -m ":trollface: Deploy from circleci"; git push -f origin gh-page; echo "ojala funcione "
           
