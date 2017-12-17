@@ -21,7 +21,7 @@ jobs:
           command: dnf install git -y 
       - run:
           name: Configuring github
-          command: git config --global user.email "martin.vuelta@gmail.com" && git config --global user.name "zodiacfireworks"
+          command: git config --global user.email "zcristian1913@hotmail.com" && git config --global user.name "pystudent1913"
       - run:
           name: Checkout to gh-pages
           command: git checkout -b gh-pages
