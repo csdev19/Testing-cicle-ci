@@ -44,3 +44,4 @@ jobs:
           name: Pushing
           command: GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git push -f origin gh-pages
 
+
