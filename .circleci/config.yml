@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    branches: 
+    branches:
       - master
     docker:
       - image: fedora:latest
@@ -17,9 +17,29 @@ jobs:
           name: Listing directory
           command: pwd && ls -lah
       - run:
-          name: Installing
-          command: dnf install git -y   
+          name: Installing Dependencies
+          command: dnf install git -y 
       - run:
-          name: Automatic deploy 
-          command: git checkout -b gh-pages; rm -r README.md  .circleci; mv src/* .; rm -r src; git add .; git commit -m ":trollface: Deploy from circleci"; git push -f origin gh-page; echo "ojala funcione "
-          
+          name: Configuring github
+          command: git config --global user.email "martin.vuelta@gmail.com" && git config --global user.name "zodiacfireworks"
+      - run:
+          name: Checkout to gh-pages
+          command: git checkout -b gh-pages
+      - run:
+          name: Remove README and .circleci
+          command: rm -r README.md .circleci
+      - run:
+          name: Extract src content
+          command: mv src/* .
+      - run:
+          name: Remove old src file
+          command: rm -r src
+      - run:
+          name: Git-add-tmr
+          command: git add .
+      - run:
+          name: Git-commit-tmr
+          command: git commit -m "Circle CI"
+      - run:
+          name: Pushing
+          command: GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git push -f origin gh-pages
